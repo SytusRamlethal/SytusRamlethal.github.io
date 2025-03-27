@@ -140,7 +140,7 @@
       <div class="category-box">
             <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">
                 前端
-                <div class="category-count">1</div>
+                <div class="category-count">9</div>
             </a>
         
             <a class="category-link" href="/categories/%E6%9C%AC%E7%A7%91%E7%9F%A5%E8%AF%86/">
@@ -157,7 +157,7 @@
   <div class="widget-wrap">
     <div class="widget">
       <h3 class="widget-title">标签</h3>
-      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%AE%A1%E7%90%86%E5%AD%A6/" rel="tag">管理学</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%AE%A1%E7%90%86%E5%AD%A6/" rel="tag">管理学</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
     </div>
   </div>
 
@@ -171,7 +171,7 @@
       
         <a class="archive-link" href="/archives/2025/03 ">
           三月 2025 
-          <div class="archive-count">3 </div>
+          <div class="archive-count">11 </div>
         </a>
       
     </div>
@@ -185,21 +185,33 @@
       <h3 class="widget-title">最新文章</h3>
       <ul>
         
-          <a class="recent-link" href="/2025/03/24/Node-js/" title="Node.js" >
+          <a class="recent-link" href="/2025/03/27/08-Router/" title="08.Router" >
             <div class="recent-link-text">
-              Node.js
+              08.Router
             </div>
           </a>
         
-          <a class="recent-link" href="/2025/03/24/%E7%AE%A1%E7%90%86%E5%AD%A6/" title="管理学" >
+          <a class="recent-link" href="/2025/03/27/07-Hooks/" title="07.Hooks" >
             <div class="recent-link-text">
-              管理学
+              07.Hooks
             </div>
           </a>
         
-          <a class="recent-link" href="/2025/03/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="计算机网络" >
+          <a class="recent-link" href="/2025/03/27/06-Redux/" title="06.Redux" >
             <div class="recent-link-text">
-              计算机网络
+              06.Redux
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/03/27/05-React%E4%B8%AD%E7%9A%84%E6%A0%B7%E5%BC%8F/" title="05.React中的样式" >
+            <div class="recent-link-text">
+              05.React中的样式
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/03/27/04-%E9%AB%98%E9%98%B6%E7%BB%84%E4%BB%B6/" title="04.高阶组件" >
+            <div class="recent-link-text">
+              04.高阶组件
             </div>
           </a>
         
@@ -213,6 +225,627 @@
     </div>
     <div id="content-body">
       
+   
+
+<article id="post-08-Router" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/27/08-Router/">08.Router</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-27T13:43:53.000Z" itemprop="datePublished">2025-03-27</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            816 words 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/" rel="tag">React</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            什么是前端路由一个 path 对应一个组件 component。当我们在浏览器访问一个 path 的时候，path 对应的组件会在页面进行渲染。
+12345678910const routes = &#123;    &#123;        path: &#x27;/about&#x27;,        component: About,    &#125;,    &#123;        path: &#x27;/article&#x27;,        component: Ariticle,    &#125;&#125;
+
+创建路由开发环境1yarn add react-router-dom
+
+基本形式1234567891011121314151617181920212223import React from &#x27;react&#x27;;import ReactDOM from &#x27;react-dom/client&#x27;;import App from &#x27;./App&#x27;import &#123;createBrowser...  
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/27/08-Router/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+ 
+
+   
+
+<article id="post-07-Hooks" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/27/07-Hooks/">07.Hooks</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-27T13:43:09.000Z" itemprop="datePublished">2025-03-27</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            970 words 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/" rel="tag">React</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            useStateuseSate 是一个 React Hook（函数），它允许我们向组件添加一个状态变量，从而控制影响组件的渲染结果。
+
+useState 是一个函数，返回值是一个数组；
+
+数组中的第一个参数是状态变量，第二个参数是 set 函数用来修改状态变量；
+
+useState 的参数将作为第一个参数的初始值。
+
+
+123456789101112131415import React, &#123; useState &#125; from &#x27;react&#x27;function App() &#123;  const [count, setCount] = useState(0)  const handleClick = (num) =&gt; &#123;    setCount(count + num)&#125;return (  &lt;div&gt;    &lt;button onClick=&#123;() =&gt; handleClick(5)&#125;&gt;&#123;count&#125;&lt;/button&gt;  &lt;/div...  
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/27/07-Hooks/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+ 
+
+   
+
+<article id="post-06-Redux" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/27/06-Redux/">06.Redux</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-27T13:42:14.000Z" itemprop="datePublished">2025-03-27</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            2.5k words 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/" rel="tag">React</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            Redux in classRedux 是一个帮助我们管理 State 的容器：Redux 是 JS 的状态容器，提供了可预测的状态管理。
+1yarn add redux
+
+StoreStore 就是用来维持应用所有 state 树的一个对象。改变 store 内 state 的唯一途径是对它 dispatch 一个 action。
+1234567const initialState = &#123;    friends: [        &#123; name: &#x27;Sytus&#x27;, age: 17 &#125;,        &#123; name: &#x27;Ram&#x27;, age: 18 &#125;,        &#123; name: &#x27;You&#x27;, age: 20 &#125;,    ]&#125;
+
+actionRedux 要求我们通过 action 来更新数据：
+
+所有数据的变化，必须通过派发（dispatch）action 来更新；
+
+action 是一个普通的 JS 对象，用来描述这次更新的 type 和...  
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/27/06-Redux/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+ 
+
+   
+
+<article id="post-05-React中的样式" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/27/05-React%E4%B8%AD%E7%9A%84%E6%A0%B7%E5%BC%8F/">05.React中的样式</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-27T13:40:54.000Z" itemprop="datePublished">2025-03-27</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            1k words 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/" rel="tag">React</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            内联样式内联样式是官方推荐的一种 CSS 样式写法：
+
+Style 接受一个采用小驼峰命名属性的 JS 对象，而不是CSS字符串；
+
+可以引用 state 中的状态来设置相关的样式。
+
+
+12345678910111213render() &#123;    const pStyle = &#123;        color: &#x27;orange&#x27;    &#125;    return (        &lt;div style=&#123;&#123; fontSize: &#x27;50px&#x27;, color: &#x27;red&#x27; &#125;&#125;&gt;            Hello World        &lt;/div&gt;        &lt;p style=&#123;pStyle&#125;&gt;            Hello React        &lt;/p&gt;    )&#125;
+
+优点
+样式之间不会有冲突；
+
+可以动态的获取当前 state 中的状态。
+
+
+缺点
+写法上都需要驼峰...  
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/27/05-React%E4%B8%AD%E7%9A%84%E6%A0%B7%E5%BC%8F/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+ 
+
+   
+
+<article id="post-04-高阶组件" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/27/04-%E9%AB%98%E9%98%B6%E7%BB%84%E4%BB%B6/">04.高阶组件</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-27T13:38:05.000Z" itemprop="datePublished">2025-03-27</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            634 words 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/" rel="tag">React</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            高阶组件的英文是 Higher-Order Components，简称为 HOC；
+官方的定义：高阶组件是参数为组件，返回值为新组件的函数；
+根据上文：
+
+高阶组件本身不是一个组件，而是一个函数；
+
+这个函数的参数是一个组件，返回值也是一个组件。
+
+
+1234567function enhanceComponent(WrappedComponent) &#123;    return class NewComponent extends PureComponent &#123;        render() &#123;            return &lt;WrappedComponent/&gt;        &#125;    &#125;&#125;
+
+
+高阶组件并不是React API的一部分，它是基于React的组合特性而形成的设计模式；
+
+高阶组件在一些React第三方库中非常常见：
+
+
+比如 redux 中的 connect 和 react-router 中的 withRouter。
+高阶组件的一些应用props增强使用高阶组件可以对多个组件添加多个相同...  
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/27/04-%E9%AB%98%E9%98%B6%E7%BB%84%E4%BB%B6/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+ 
+
+   
+
+<article id="post-03-受控和非受控组件" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/27/03-%E5%8F%97%E6%8E%A7%E5%92%8C%E9%9D%9E%E5%8F%97%E6%8E%A7%E7%BB%84%E4%BB%B6/">03.受控和非受控组件</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-27T13:37:13.000Z" itemprop="datePublished">2025-03-27</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            735 words 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/" rel="tag">React</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            refsrefs的使用目前创建 refs&#x20;&#x6765;获取对应DOM的方式有三种：
+
+传入字符串：
+
+使用时通过 this.refs. 传入的字符串格式获取对应的元素；
+12345678910111213class App extends PureComponent &#123;  render() &#123;    return (      &lt;div&gt;        &lt;p ref=&#x27;titleRef&#x27;&gt;Hello React&lt;/p&gt;        &lt;button onClick=&#123;e =&gt; this.handleClick()&#125;&gt;改变文本&lt;/button&gt;      &lt;/div&gt;    )  &#125;  handleClick() &#123;    this.refs.titleRef.innerHTML = &#x27;Hello Friend&#x27;  &#125;&#125;
+
+
+传入一个对象：（推荐）
+
+对象是通过 React...  
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/27/03-%E5%8F%97%E6%8E%A7%E5%92%8C%E9%9D%9E%E5%8F%97%E6%8E%A7%E7%BB%84%E4%BB%B6/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+ 
+
+   
+
+<article id="post-02-React组件化开发" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/27/02-React%E7%BB%84%E4%BB%B6%E5%8C%96%E5%BC%80%E5%8F%91/">02.React组件化开发</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-27T13:32:45.000Z" itemprop="datePublished">2025-03-27</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            1.6k words 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/" rel="tag">React</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            类组件类组件的定义有如下要求：
+
+组件的名称必须要大写字符开头；
+
+类组件需要继承React.Component;
+
+类组件必须实现render函数。
+
+
+1234567891011121314import React, &#123;Component&#125; from &#x27;react&#x27;export default class App extends Component &#123;    constructor() &#123;        super()        this.state = &#123;            msg: &#x27;Hello State&#x27;        &#125;    &#125;    render() &#123;        return (            &lt;div&gt;&#123;this.state.msg&#125;&lt;/div&gt;        )    &#125;&#125;
+
+函数组件函数组件的特点：
+
+没&#x6709;this&#x5BF9;象；
+
+没...  
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/27/02-React%E7%BB%84%E4%BB%B6%E5%8C%96%E5%BC%80%E5%8F%91/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+ 
+
+   
+
+<article id="post-01-JSX核心语法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/27/01-JSX%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95/">01.JSX核心语法</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-27T13:31:32.000Z" itemprop="datePublished">2025-03-27</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            1.1k words 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/" rel="tag">React</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            JSX示例语法我们在以往的学习中经常可以看到以下的代码：
+123456const question = &#x27;why&#x27;const age = 18const height = 1.8const func = function() &#123;&#125;const obj = &#123;&#125;
+
+但我们却没见过这样的代码：
+1const element = &lt;h1&gt;Hello World!&lt;/h2&gt;
+
+像这样的代码，就是JSX的语法。它要求我们必须引入“babel”。
+1234&lt;script crossorigin src=&quot;https://unpkg.com/babel-standalone@6/babel.min.js&quot;&gt;&lt;/script&gt;&lt;script type=&quot;text/babel&quot;&gt;// 示例代码&lt;/script&gt;
+
+如若不引入，那你所使用的仍然是普通的JS代码。
+什么是JSX？JSX是JavaScript的语法扩展，它用于描述UI界...  
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/27/01-JSX%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+ 
+
    
 
 <article id="post-Node-js" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">

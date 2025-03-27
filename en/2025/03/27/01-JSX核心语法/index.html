@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="/fontawesome/css/fontawesome.css" rel="stylesheet">
+<link href="/fontawesome/css/brands.css" rel="stylesheet">
+<link href="/fontawesome/css/solid.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>01.JSX核心语法 | Sytusの窝</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="JSX示例语法我们在以往的学习中经常可以看到以下的代码： 123456const question &#x3D; &amp;#x27;why&amp;#x27;const age &#x3D; 18const height &#x3D; 1.8const func &#x3D; function() &amp;#123;&amp;#125;const obj &#x3D; &amp;#123;&amp;#125;  但我们却没见过这样的代码： 1const element &#x3D; &lt;h1&amp;g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="01.JSX核心语法">
+<meta property="og:url" content="http://example.com/en/2025/03/27/01-JSX%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95/index.html">
+<meta property="og:site_name" content="Sytusの窝">
+<meta property="og:description" content="JSX示例语法我们在以往的学习中经常可以看到以下的代码： 123456const question &#x3D; &amp;#x27;why&amp;#x27;const age &#x3D; 18const height &#x3D; 1.8const func &#x3D; function() &amp;#123;&amp;#125;const obj &#x3D; &amp;#123;&amp;#125;  但我们却没见过这样的代码： 1const element &#x3D; &lt;h1&amp;g">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-03-27T13:31:32.000Z">
+<meta property="article:modified_time" content="2025-03-27T13:32:17.994Z">
+<meta property="article:author" content="Sytus Ramlethal">
+<meta property="article:tag" content="React">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="shortcut icon" href="/assets/favicon.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/assets/banner.png" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="shadow   ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div>Sytusの窝 </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">主页</a>
+    
+      <a class="main-nav-link" href="/archives">存档</a>
+    
+      <a class="main-nav-link" href="/about">关于</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">主页</a>
+    
+      <a class="nav-dropdown-link" href="/archives">存档</a>
+    
+      <a class="nav-dropdown-link" href="/about">关于</a>
+    
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/assets/userImg.png></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">Sytus Ramlethal </div>
+      <div class="dot"></div>
+      <div class="subtitle">随笔、学习，还有更多... </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://twitter.com/Sytus_Ramlethal" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://space.bilibili.com/12996728?spm_id_from=333.1007.0.0" title="Steam"><i class="fa-brands fa-bilibili"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/SytusRamlethal" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">分类</h3>
+      <div class="category-box">
+            <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">
+                前端
+                <div class="category-count">9</div>
+            </a>
+        
+            <a class="category-link" href="/categories/%E6%9C%AC%E7%A7%91%E7%9F%A5%E8%AF%86/">
+                本科知识
+                <div class="category-count">2</div>
+            </a>
+        </div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">标签</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%AE%A1%E7%90%86%E5%AD%A6/" rel="tag">管理学</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">归档</h3>
+      
+      
+        <a class="archive-link" href="/archives/2025/03 ">
+          三月 2025 
+          <div class="archive-count">11 </div>
+        </a>
+      
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">最新文章</h3>
+      <ul>
+        
+          <a class="recent-link" href="/2025/03/27/08-Router/" title="08.Router" >
+            <div class="recent-link-text">
+              08.Router
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/03/27/07-Hooks/" title="07.Hooks" >
+            <div class="recent-link-text">
+              07.Hooks
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/03/27/06-Redux/" title="06.Redux" >
+            <div class="recent-link-text">
+              06.Redux
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/03/27/05-React%E4%B8%AD%E7%9A%84%E6%A0%B7%E5%BC%8F/" title="05.React中的样式" >
+            <div class="recent-link-text">
+              05.React中的样式
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/03/27/04-%E9%AB%98%E9%98%B6%E7%BB%84%E4%BB%B6/" title="04.高阶组件" >
+            <div class="recent-link-text">
+              04.高阶组件
+            </div>
+          </a>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+<article id="post-01-JSX核心语法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        01.JSX核心语法
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-27T13:31:32.000Z" itemprop="datePublished">2025-03-27</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            1.1k words 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/" rel="tag">React</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h1 id="JSX示例语法"><a href="#JSX示例语法" class="headerlink" title="JSX示例语法"></a>JSX示例语法</h1><p>我们在以往的学习中经常可以看到以下的代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> question = <span class="string">&#x27;why&#x27;</span></span><br><span class="line"><span class="keyword">const</span> age = <span class="number">18</span></span><br><span class="line"><span class="keyword">const</span> height = <span class="number">1.8</span></span><br><span class="line"><span class="keyword">const</span> func = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> obj = &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但我们却没见过这样的代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = &lt;h1&gt;<span class="title class_">Hello</span> <span class="title class_">World</span>!&lt;/h2&gt;</span><br></pre></td></tr></table></figure>
+
+<p>像这样的代码，就是JSX的语法。它要求我们必须引入“<strong>babel”。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;script crossorigin src=<span class="string">&quot;https://unpkg.com/babel-standalone@6/babel.min.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/babel&quot;</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="comment">// 示例代码</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>如若不引入，那你所使用的仍然是普通的JS代码。</p>
+<h1 id="什么是JSX？"><a href="#什么是JSX？" class="headerlink" title="什么是JSX？"></a>什么是JSX？</h1><p>JSX是JavaScript的语法扩展，它用于描述UI界面，并且使其可以和JS融合在一起使用（<em>All in JS</em>）。</p>
+<p>React认为渲染逻辑本质上与其他UI逻辑存在内在耦合，相互的依赖非常强，所以React并没有将他们分离，而是将其组合为了组件（<em>Component</em>）。</p>
+<h1 id="JSX书写规范"><a href="#JSX书写规范" class="headerlink" title="JSX书写规范"></a>JSX书写规范</h1><ol>
+<li><p>JSX的顶层只能有<strong>一个根元素；</strong></p>
+</li>
+<li><p>为了方便阅读，我们通常在JSX的外层包裹一个小括号()；</p>
+</li>
+<li><p>JSX的标签可以是单标签，也可以是双标签。</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="title class_">App</span>/&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">App</span>&gt;</span><span class="tag">&lt;/<span class="name">App</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>JSX的注释：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>该内容视为在JSX环境下<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">    &#123;<span class="comment">/* &lt;h2&gt;Hello World&lt;/h2&gt; */</span>&#125;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>JSX中嵌入数值：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/babel&quot;</span>&gt;</span><br><span class="line">     <span class="keyword">class</span> <span class="title class_">App</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">         <span class="title function_">constructor</span>(<span class="params">props</span>) &#123;</span><br><span class="line">             <span class="variable language_">super</span>(props)</span><br><span class="line"></span><br><span class="line">             <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">                 <span class="attr">name</span>: <span class="string">&#x27;why&#x27;</span>,</span><br><span class="line">                 <span class="attr">names</span>: [<span class="string">&#x27;abc&#x27;</span>, <span class="string">&#x27;cba&#x27;</span>, <span class="string">&#x27;nba&#x27;</span>],</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">             <span class="keyword">return</span> (</span><br><span class="line">                 <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>&#123;this.state.name&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>&#123;this.state.names&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span> &#123;/* abccbanba */&#125;</span></span><br><span class="line"><span class="language-xml">                 <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">             )</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     <span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>, <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#app&#x27;</span>))</span><br><span class="line"> &lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>JSX的嵌入数据不能显示null、undefined、布尔值（<em>true、false</em>）。因为在真实渲染中，我们会进行一些真实判断，比如在使用一些三元运算符时，结果可能为null，这时页面中不应该呈现“null”字符，而是应该为空。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> flag = <span class="title function_">false</span></span><br><span class="line">(</span><br><span class="line">   ...</span><br><span class="line">   &#123; flag ? <span class="string">&#x27;Flag is true.&#x27;</span> : <span class="literal">null</span> &#125;</span><br><span class="line">   &#123; flag &amp;&amp; <span class="string">&#x27;Flag is true&#x27;</span> &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>对象不能作为JSX的子类。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">     <span class="attr">name</span>: <span class="string">&#x27;Sytus&#x27;</span>,</span><br><span class="line">     <span class="attr">age</span>: <span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line">(</span><br><span class="line">    ...</span><br><span class="line">    &#123; obj &#125; &#123;<span class="comment">/* 错误，无法显示 */</span>&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>JSX的嵌入表达式：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"> <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">     <span class="attr">first</span>: <span class="string">&#x27;Sytus&#x27;</span>,</span><br><span class="line">     <span class="attr">last</span>: <span class="string">&#x27;Ramlethal&#x27;</span></span><br><span class="line"> &#125;</span><br><span class="line">...</span><br><span class="line">(</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">h2</span>&gt;</span> &#123; this.state.first + &#x27;&#x27; + this.state.last &#125; <span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span> &#123;<span class="comment">/* Sytus Ramlethal */</span>&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>JSX绑定属性</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/babel&quot;</span>&gt;</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">getSize</span>(<span class="params">imgUrl, size</span>)&#123;</span><br><span class="line">       <span class="keyword">return</span> imgUrl + <span class="string">`param=<span class="subst">$&#123;size&#125;</span>x<span class="subst">$&#123;size&#125;</span>`</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">App</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">        <span class="title function_">constructor</span>(<span class="params">props</span>) &#123;</span><br><span class="line">            <span class="variable language_">super</span>(props)</span><br><span class="line"></span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">                <span class="attr">title</span>: <span class="string">&#x27;标题&#x27;</span>,</span><br><span class="line">                <span class="attr">imgUrl</span>: <span class="string">&#x27;http://172.22.4.2/&#x27;</span>,</span><br><span class="line">                <span class="attr">active</span>: <span class="literal">false</span>,</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> (</span><br><span class="line">                <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                     &#123;/* 绑定普通属性 */&#125;</span></span><br><span class="line"><span class="language-xml">                     <span class="tag">&lt;<span class="name">h2</span> <span class="attr">title</span>=<span class="string">&#123;this.state.title&#125;</span>&gt;</span>我是标题<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                     <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&#123;getSize(this.state.imgUrl,</span> <span class="attr">200</span>)&#125;/&gt;</span></span></span><br><span class="line"><span class="language-xml">                     &#123;/* 绑定class */&#125;</span></span><br><span class="line"><span class="language-xml">                     <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#x27;box&#x27;</span>&gt;</span>我是一个DIV<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                     <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#123;</span>&#x27;<span class="attr">box</span>&#x27; + (<span class="attr">this.state.active</span> ? &#x27;<span class="attr">active</span>&#x27; <span class="attr">:</span> &#x27;&#x27;)&#125;&gt;</span>我也是一个DIV<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                     &#123;/* 绑定style */&#125;</span></span><br><span class="line"><span class="language-xml">                     <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&#123;&#123;</span> <span class="attr">color:</span> &#x27;<span class="attr">red</span>&#x27;, <span class="attr">fontSize:</span> &#x27;<span class="attr">16px</span>&#x27;&#125;&#125;&gt;</span>我是DIV<span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span></span><br><span class="line"><span class="language-xml">                     &#123;/* 第一个大括号意为将要开始编写JS代码，第二个大括号意为这是一个对象 */&#125;</span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">            )</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>, <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#app&#x27;</span>))</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>JSX绑定事件：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/babel&quot;</span>&gt;</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">App</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">        <span class="title function_">constructor</span>(<span class="params">props</span>) &#123;</span><br><span class="line">            <span class="variable language_">super</span>(props)</span><br><span class="line"></span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">                <span class="attr">msg</span>: <span class="string">&#x27;Hello&#x27;</span></span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">btnClick</span> = <span class="variable language_">this</span>.<span class="property">btnClick</span>.<span class="title function_">bind</span>(<span class="variable language_">this</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> (</span><br><span class="line">                <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                    &#123;/* 通过bind改变this指向 */&#125;</span></span><br><span class="line"><span class="language-xml">                    &#123;/* <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.btnClick.bind(this)&#125;</span>&gt;</span>按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span> */&#125;</span></span><br><span class="line"><span class="language-xml">                    <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.btnClick&#125;</span>&gt;</span>按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                    </span></span><br><span class="line"><span class="language-xml">                    &#123;/* 定义函数时使用箭头函数 */&#125;</span></span><br><span class="line"><span class="language-xml">                    <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.increment&#125;</span>&gt;</span>按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                    </span></span><br><span class="line"><span class="language-xml">                    &#123;/* 直接传入箭头函数，在箭头函数中调用需要执行的函数（推荐） */&#125;</span></span><br><span class="line"><span class="language-xml">                    <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> &#123;this.decrement()&#125;&#125;&gt;按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">            )</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title function_">btnClick</span>(<span class="params"></span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;按钮发生了点击。&#x27;</span>, <span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">msg</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 箭头函数中永远不绑定this</span></span><br><span class="line">        increment = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">msg</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="title function_">decrement</span>(<span class="params"></span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">msg</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>, <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#app&#x27;</span>))</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>绑定事件，传递参数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/babel&quot;</span>&gt;</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">App</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">        <span class="title function_">constructor</span>(<span class="params">props</span>) &#123;</span><br><span class="line">            <span class="variable language_">super</span>(props)</span><br><span class="line"></span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">                <span class="attr">arr</span>: [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>]</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">btnClick</span> = <span class="variable language_">this</span>.<span class="property">btnClick</span>.<span class="title function_">bind</span>(<span class="variable language_">this</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> (</span><br><span class="line">                <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                    <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.btnClick&#125;</span>&gt;</span>按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                        &#123;</span></span><br><span class="line"><span class="language-xml">                            this.state.arr.map((item, index, arr) =&gt; &#123;</span></span><br><span class="line"><span class="language-xml">                                return (<span class="tag">&lt;<span class="name">li</span> <span class="attr">onClick</span>=<span class="string">&#123;(e)</span> =&gt;</span> &#123;this.liClick(item, index, e)&#125;&#125;&gt;&#123;item&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span>)</span></span><br><span class="line"><span class="language-xml">                            &#125;)</span></span><br><span class="line"><span class="language-xml">                        &#125;</span></span><br><span class="line"><span class="language-xml">                    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">            )</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title function_">btnClick</span>(<span class="params">e</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(e) <span class="comment">// 能拿到event对象</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title function_">liClick</span>(<span class="params">item, index, e</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(item, index, e) <span class="comment">// 拿到item，index和event对象</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>, <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#app&#x27;</span>))</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="React条件渲染"><a href="#React条件渲染" class="headerlink" title="React条件渲染"></a>React条件渲染</h1><p>某些情况下，界面的内容会根据不同的情况显示不同的内容，或者决定是否渲染某部分内容。</p>
+<h2 id="原生判断"><a href="#原生判断" class="headerlink" title="原生判断"></a>原生判断</h2><p>在React中，所有的条件判断都和普通的JS代码一致。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/babel&quot;</span>&gt;</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">App</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">        <span class="title function_">constructor</span>(<span class="params">props</span>) &#123;</span><br><span class="line">            <span class="variable language_">super</span>(props)</span><br><span class="line"></span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">                <span class="attr">isLogin</span>: <span class="literal">false</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">            <span class="keyword">let</span> welcome = <span class="literal">null</span></span><br><span class="line">            <span class="keyword">let</span> &#123;isLogin&#125; = <span class="variable language_">this</span>.<span class="property">state</span></span><br><span class="line">            <span class="keyword">if</span> (isLogin) &#123;</span><br><span class="line">                welcome = <span class="language-xml"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                welcome = <span class="language-xml"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>Hello React<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line">            &#125;</span><br><span class="line">         <span class="keyword">return</span> (</span><br><span class="line">            <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                &#123;welcome&#125;</span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">button</span>&gt;</span>&#123;this.state.isLogin ? &#x27;退出&#x27; : &#x27;登录&#x27;&#125;<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">hr</span>/&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">h2</span>&gt;</span>&#123;isLogin &amp;&amp; &#x27;Hello&#x27;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">hr</span>/&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">h2</span> <span class="attr">style</span>=<span class="string">&#123;&#123;display:</span> <span class="attr">isLogin</span> ? &#x27;<span class="attr">block</span>&#x27; <span class="attr">:</span> &#x27;<span class="attr">none</span>&#x27;&#125;&#125;&gt;</span>Hello<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">hr</span>/&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">h2</span> <span class="attr">className</span>=<span class="string">&#123;[</span>&#x27;<span class="attr">title</span>&#x27;, (<span class="attr">isActive</span> ? &#x27;<span class="attr">active</span>&#x27; <span class="attr">:</span> &#x27;&#x27;)]<span class="attr">.join</span>(&#x27; &#x27;)&#125;&gt;</span>我是标题<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">        )</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>, <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#app&#x27;</span>))</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="通过classnames库进行条件添加类名"><a href="#通过classnames库进行条件添加类名" class="headerlink" title="通过classnames库进行条件添加类名"></a>通过classnames库进行条件添加类名</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add classnames</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> classNames <span class="keyword">from</span> <span class="string">&#x27;classnames&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> errClass = <span class="string">&#x27;error&#x27;</span></span><br><span class="line">(</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">className</span>=<span class="string">&#123;classNames(</span>&#x27;<span class="attr">foo</span>&#x27;, &#x27;<span class="attr">bar</span>&#x27;)&#125;&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line">    <span class="comment">// &lt;h2 className=&#x27;foo bar&#x27;&gt;&lt;/h2&gt;</span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">className</span>=<span class="string">&#123;classNames(&#123;</span>&#x27;<span class="attr">active</span>&#x27;<span class="attr">:</span> <span class="attr">true</span>, &#x27;<span class="attr">bar</span>&#x27;<span class="attr">:</span> <span class="attr">false</span>&#125;, &#x27;<span class="attr">title</span>&#x27;)&#125;&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line">    <span class="comment">// &lt;h2 className=&#x27;active title&#x27;&gt;&lt;/h2&gt;</span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">className</span>=<span class="string">&#123;classNames(&#123;</span>&#x27;<span class="attr">title</span>&#x27;, <span class="attr">errClass</span>&#125;)&#125;&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line">    <span class="comment">// &lt;h2 className=&#x27;title error&#x27;&gt;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="React列表渲染"><a href="#React列表渲染" class="headerlink" title="React列表渲染"></a>React列表渲染</h1><p>开发中我们会从服务器请求到大量的数据，数据会以列表的形式储存。</p>
+<p>在React中，展示列表最多的方式是使用数组的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map">map</a>高阶函数。</p>
+<p>在对一个数组中的数据进行处理时，过滤内容我们使用<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/filter">filter</a>函数，截取数组我们只用<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/slice">slice</a>函数。</p>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left "
+    
+      href="/2025/03/27/02-React%E7%BB%84%E4%BB%B6%E5%8C%96%E5%BC%80%E5%8F%91/"
+      title="02.React组件化开发"
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+      
+        02.React组件化开发
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/2025/03/24/Node-js/"
+      title="Node.js"
+     >
+
+    <p class="title-text">
+      
+        Node.js
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+ 
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2025 Sytus Ramlethal<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+</body>
+</html>

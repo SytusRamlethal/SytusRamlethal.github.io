@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="/fontawesome/css/fontawesome.css" rel="stylesheet">
+<link href="/fontawesome/css/brands.css" rel="stylesheet">
+<link href="/fontawesome/css/solid.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>08.Router | Sytusの窝</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="什么是前端路由一个 path 对应一个组件 component。当我们在浏览器访问一个 path 的时候，path 对应的组件会在页面进行渲染。 12345678910const routes &#x3D; &amp;#123;    &amp;#123;        path: &amp;#x27;&#x2F;about&amp;#x27;,        component: About,    &amp;#125;,    &amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="08.Router">
+<meta property="og:url" content="http://example.com/en/2025/03/27/08-Router/index.html">
+<meta property="og:site_name" content="Sytusの窝">
+<meta property="og:description" content="什么是前端路由一个 path 对应一个组件 component。当我们在浏览器访问一个 path 的时候，path 对应的组件会在页面进行渲染。 12345678910const routes &#x3D; &amp;#123;    &amp;#123;        path: &amp;#x27;&#x2F;about&amp;#x27;,        component: About,    &amp;#125;,    &amp;#123;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-03-27T13:43:53.000Z">
+<meta property="article:modified_time" content="2025-03-27T13:44:08.193Z">
+<meta property="article:author" content="Sytus Ramlethal">
+<meta property="article:tag" content="React">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="shortcut icon" href="/assets/favicon.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/assets/banner.png" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="shadow   ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div>Sytusの窝 </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">主页</a>
+    
+      <a class="main-nav-link" href="/archives">存档</a>
+    
+      <a class="main-nav-link" href="/about">关于</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">主页</a>
+    
+      <a class="nav-dropdown-link" href="/archives">存档</a>
+    
+      <a class="nav-dropdown-link" href="/about">关于</a>
+    
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/assets/userImg.png></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">Sytus Ramlethal </div>
+      <div class="dot"></div>
+      <div class="subtitle">随笔、学习，还有更多... </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://twitter.com/Sytus_Ramlethal" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://space.bilibili.com/12996728?spm_id_from=333.1007.0.0" title="Steam"><i class="fa-brands fa-bilibili"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/SytusRamlethal" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">分类</h3>
+      <div class="category-box">
+            <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">
+                前端
+                <div class="category-count">9</div>
+            </a>
+        
+            <a class="category-link" href="/categories/%E6%9C%AC%E7%A7%91%E7%9F%A5%E8%AF%86/">
+                本科知识
+                <div class="category-count">2</div>
+            </a>
+        </div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">标签</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%AE%A1%E7%90%86%E5%AD%A6/" rel="tag">管理学</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">归档</h3>
+      
+      
+        <a class="archive-link" href="/archives/2025/03 ">
+          三月 2025 
+          <div class="archive-count">11 </div>
+        </a>
+      
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">最新文章</h3>
+      <ul>
+        
+          <a class="recent-link" href="/2025/03/27/08-Router/" title="08.Router" >
+            <div class="recent-link-text">
+              08.Router
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/03/27/07-Hooks/" title="07.Hooks" >
+            <div class="recent-link-text">
+              07.Hooks
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/03/27/06-Redux/" title="06.Redux" >
+            <div class="recent-link-text">
+              06.Redux
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/03/27/05-React%E4%B8%AD%E7%9A%84%E6%A0%B7%E5%BC%8F/" title="05.React中的样式" >
+            <div class="recent-link-text">
+              05.React中的样式
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/03/27/04-%E9%AB%98%E9%98%B6%E7%BB%84%E4%BB%B6/" title="04.高阶组件" >
+            <div class="recent-link-text">
+              04.高阶组件
+            </div>
+          </a>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+<article id="post-08-Router" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        08.Router
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-27T13:43:53.000Z" itemprop="datePublished">2025-03-27</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            816 words 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/" rel="tag">React</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h1 id="什么是前端路由"><a href="#什么是前端路由" class="headerlink" title="什么是前端路由"></a>什么是前端路由</h1><p>一个 path 对应一个组件 component。当我们在浏览器访问一个 path 的时候，path 对应的组件会在页面进行渲染。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> routes = &#123;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">path</span>: <span class="string">&#x27;/about&#x27;</span>,</span><br><span class="line">        <span class="attr">component</span>: <span class="title class_">About</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">path</span>: <span class="string">&#x27;/article&#x27;</span>,</span><br><span class="line">        <span class="attr">component</span>: <span class="title class_">Ariticle</span>,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="创建路由开发环境"><a href="#创建路由开发环境" class="headerlink" title="创建路由开发环境"></a>创建路由开发环境</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add react-router-dom</span><br></pre></td></tr></table></figure>
+
+<h2 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">ReactDOM</span> <span class="keyword">from</span> <span class="string">&#x27;react-dom/client&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">App</span> <span class="keyword">from</span> <span class="string">&#x27;./App&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123;createBrowserRouter, <span class="title class_">RouterProvider</span>&#125; <span class="keyword">from</span> <span class="string">&#x27;react-router-dom&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1.创建router实例对象并且配置路由对应关系</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = <span class="title function_">createBrowserRouter</span>([</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;/login&#x27;</span>,</span><br><span class="line">    <span class="attr">element</span>: <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Login<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;/article&#x27;</span>,</span><br><span class="line">    <span class="attr">element</span>: <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Article<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  &#125;,</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> root = <span class="title class_">ReactDOM</span>.<span class="title function_">createRoot</span>(<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;root&#x27;</span>));</span><br><span class="line">root.<span class="title function_">render</span>(</span><br><span class="line">  <span class="comment">// 路由绑定</span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">RouterProvider</span> <span class="attr">router</span>=<span class="string">&#123;router&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">RouterProvider</span>&gt;</span></span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h1 id="路由导航"><a href="#路由导航" class="headerlink" title="路由导航"></a>路由导航</h1><h2 id="声明式导航"><a href="#声明式导航" class="headerlink" title="声明式导航"></a>声明式导航</h2><p>声明式导航是在模板中通过 &lt;Link&#x2F;&gt; 组件描述出要跳转到哪里去，比如后台管理系统的左侧菜单通常使用这种方式进行。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="title class_">Link</span> to=<span class="string">&quot;/article&quot;</span>&gt;文章&lt;/<span class="title class_">Link</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="编程式导航"><a href="#编程式导航" class="headerlink" title="编程式导航"></a>编程式导航</h2><p>编程式导航是通过 useNavigate 钩子得到导航方式，然后通过调用方法以命令的形式进行路由跳转。这种方法更加灵活。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;useNavigate&#125; <span class="keyword">from</span> <span class="string">&#x27;react-router-dom&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">Login</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> navigate = <span class="title function_">useNavigate</span>()</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            Login</span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">button</span> </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> navigate(&#x27;/article&#x27;)&#125;&gt;</span></span><br><span class="line"><span class="language-xml">            To Article</span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="导航传参"><a href="#导航传参" class="headerlink" title="导航传参"></a>导航传参</h1><h3 id="searchParams传参"><a href="#searchParams传参" class="headerlink" title="searchParams传参"></a>searchParams传参</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">navigate</span>(<span class="string">&#x27;/article?id=1001&amp;name=jack&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [params] = <span class="title function_">useSearchParams</span>()</span><br><span class="line"><span class="keyword">let</span> id = params.<span class="title function_">get</span>(<span class="string">&#x27;id&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="params传参"><a href="#params传参" class="headerlink" title="params传参"></a>params传参</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// router</span></span><br><span class="line"><span class="keyword">const</span> router = <span class="title function_">createBrowserRouter</span>([</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">path</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">        <span class="attr">element</span>: <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Home<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">path</span>: <span class="string">&#x27;/login&#x27;</span>,</span><br><span class="line">        <span class="attr">element</span>: <span class="language-xml"><span class="tag">&lt;<span class="name">Login</span>/&gt;</span></span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">path</span>: <span class="string">&#x27;/article/:id&#x27;</span>,</span><br><span class="line">        <span class="attr">element</span>: <span class="language-xml"><span class="tag">&lt;<span class="name">Article</span>/&gt;</span></span></span><br><span class="line">    &#125;</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">navigate</span>(<span class="string">&#x27;/article/1001&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> params = <span class="title function_">useParams</span>()</span><br><span class="line"><span class="keyword">let</span> id = params.<span class="property">id</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="嵌套路由"><a href="#嵌套路由" class="headerlink" title="嵌套路由"></a>嵌套路由</h1><p>在一级路由中又嵌套了其他路由，这种关系就叫做嵌套路由。</p>
+<p>嵌套一级路由内的路由又称作二级路由。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="title function_">createBrowserRouter</span>([</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">path</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">        <span class="attr">element</span>: <span class="language-xml"><span class="tag">&lt;<span class="name">Layout</span>&gt;</span><span class="tag">&lt;/<span class="name">Layout</span>&gt;</span></span>,</span><br><span class="line">        <span class="attr">children</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">path</span>: <span class="string">&#x27;/board&#x27;</span>,</span><br><span class="line">                <span class="attr">element</span>: <span class="language-xml"><span class="tag">&lt;<span class="name">Board</span>&gt;</span><span class="tag">&lt;/<span class="name">Board</span>&gt;</span></span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">path</span>: <span class="string">&#x27;/About&#x27;</span>,</span><br><span class="line">                <span class="attr">element</span>: <span class="language-xml"><span class="tag">&lt;<span class="name">About</span>&gt;</span><span class="tag">&lt;/<span class="name">About</span>&gt;</span></span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Link</span>, <span class="title class_">Outlet</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react-router-dom&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Layout</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            这是一级路由</span></span><br><span class="line"><span class="language-xml">            &#123;/* 配置二级路由出口 */&#125;</span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">Link</span> <span class="attr">to</span>=<span class="string">&#x27;/About&#x27;</span>&gt;</span>About<span class="tag">&lt;/<span class="name">Link</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">Link</span> <span class="attr">to</span>=<span class="string">&#x27;Board&#x27;</span>&gt;</span>Board<span class="tag">&lt;/<span class="name">Link</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">Outlet</span>&gt;</span><span class="tag">&lt;/<span class="name">Outlet</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="默认二级路由"><a href="#默认二级路由" class="headerlink" title="默认二级路由"></a>默认二级路由</h2><p>当访问一级路由时，默认的二级路由可以得到渲染，只需要在二级路由的位置去掉 path，设置 index 属性为 true。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">children</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">index</span>: <span class="literal">true</span></span><br><span class="line">        <span class="attr">element</span>: <span class="language-xml"><span class="tag">&lt;<span class="name">Board</span>&gt;</span><span class="tag">&lt;/<span class="name">Board</span>&gt;</span></span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">path</span>: <span class="string">&#x27;/About&#x27;</span>,</span><br><span class="line">        <span class="attr">element</span>: <span class="language-xml"><span class="tag">&lt;<span class="name">About</span>&gt;</span><span class="tag">&lt;/<span class="name">About</span>&gt;</span></span></span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h1 id="404路由配置"><a href="#404路由配置" class="headerlink" title="404路由配置"></a>404路由配置</h1><p>当浏览器输入 url 的路径在整个路由配置中都找不到对应的 path，为了用户体验，可以使用 404 兜底组件进行渲染。</p>
+<ol>
+<li><p>准备一个 NotFound 组件；</p>
+</li>
+<li><p>在路由表的末尾，以 * 号作为路由 path 配置路由。</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// NotFound</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">NotFound</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>This is NotFound<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">NotFound</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;*&#x27;</span>,</span><br><span class="line">    <span class="attr">element</span>: <span class="language-xml"><span class="tag">&lt;<span class="name">NotFound</span>/&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="两种路由模式"><a href="#两种路由模式" class="headerlink" title="两种路由模式"></a>两种路由模式</h1><p>History 模式和 hash 模式分别需要 createBrowerRouter 和 createHashRouter 函数负责创建。</p>
+<table>
+<thead>
+<tr>
+<th>路由模式</th>
+<th></th>
+<th>Url 表现</th>
+<th></th>
+<th>底层原理</th>
+<th></th>
+<th>是否需要后端支持</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>history</td>
+<td></td>
+<td>url&#x2F;login</td>
+<td></td>
+<td>history对象+pushState事件</td>
+<td></td>
+<td>需要</td>
+<td></td>
+</tr>
+<tr>
+<td>hash</td>
+<td></td>
+<td>url&#x2F;#&#x2F;login</td>
+<td></td>
+<td>监听 hashChange事件</td>
+<td></td>
+<td>不需要</td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="路由懒加载"><a href="#路由懒加载" class="headerlink" title="路由懒加载"></a>路由懒加载</h1><p>路由懒加载是指路由的 JS 资源只有在被访问时才会动态获取，目的是为了优化项目首次打开的时间。</p>
+<ol>
+<li><p>把路由修改为由 React 提供的 lazy 函数进行动态导入；</p>
+</li>
+<li><p>使用 React 内置的 Suspense 组件包裹路由中的 element 选项对应的组件。</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Suspense</span>, lazy &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="comment">// 1. lazy函数对组件进行导入</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Layout</span> = <span class="title function_">lazy</span>(<span class="function">() =&gt;</span> <span class="keyword">import</span>(<span class="string">&#x27;../pages/Layout&#x27;</span>))</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Board</span> = <span class="title function_">lazy</span>(<span class="function">() =&gt;</span> <span class="keyword">import</span>(<span class="string">&#x27;../pages/Board&#x27;</span>))</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">About</span> = <span class="title function_">lazy</span>(<span class="function">() =&gt;</span> <span class="keyword">import</span>(<span class="string">&#x27;../pages/About&#x27;</span>))</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">NotFound</span> = <span class="title function_">lazy</span>(<span class="function">() =&gt;</span> <span class="keyword">import</span>(<span class="string">&#x27;../pages/NotFound&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;/About&#x27;</span>,</span><br><span class="line">    <span class="attr">element</span>: </span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Suspense</span> <span class="attr">fallback</span>=<span class="string">&#123;</span>&#x27;<span class="attr">Loading</span>&#x27;&#125;&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">About</span>&gt;</span><span class="tag">&lt;/<span class="name">About</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Suspense</span>&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left  disabled "
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/2025/03/27/07-Hooks/"
+      title="07.Hooks"
+     >
+
+    <p class="title-text">
+      
+        07.Hooks
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+ 
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2025 Sytus Ramlethal<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+</body>
+</html>
