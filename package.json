@@ -33,6 +33,7 @@
     "astro": "5.5.5",
     "astro-compress": "^2.3.6",
     "astro-icon": "^1.1.5",
+    "fuwari": "link:",
     "hastscript": "^9.0.1",
     "katex": "^0.16.21",
     "markdown-it": "^14.1.0",
