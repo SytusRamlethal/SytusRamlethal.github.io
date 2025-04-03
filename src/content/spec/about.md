@@ -35,7 +35,7 @@
 
 #### JavaScript
 
-本人初学此语言时主要使用 [现代 JavaScript 教程](https://zh.javascript.info/)。但在实际教学和推荐的反馈中，发现大部分人学习效果不好，所以建议有一定 JavaScript 或其他编程语言基础的朋友进行学习。
+本人初学此语言时主要使用 [现代 JavaScript 教程](https://zh.javascript.info/)。但在实际教学和推荐的反馈中，发现大部分人学习效果并不好，所以建议有一定 JavaScript 或其他编程语言基础的朋友进行学习。
 
 * [笔记快捷链接➡️](https://sytusramlethal.github.io/archive/tag/JavaScript/)
 
