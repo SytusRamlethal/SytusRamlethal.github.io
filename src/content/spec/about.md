@@ -10,7 +10,7 @@
 
 ## ⚖️许可协议
 
-除非另作声明，本站所有文章采用“[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)”协议，遵循“个人非商用”原则。
+除非另作声明，本站所有文章均采用“[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)”协议，遵循“个人非商用”原则。
 
 ## 📄文章简述
 
@@ -49,4 +49,5 @@
 
 * 博客框架🎉[Astro](https://astro.build/)；
 * 博客模板🎉[Fuwari](https://github.com/saicaca/fuwari)；
+* 评论支持🎉[giscus](https://giscus.app/zh-CN)；
 * 网站部署🎉[Github Page](https://pages.github.com/)。
