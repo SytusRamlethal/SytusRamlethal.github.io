@@ -12,14 +12,14 @@ const aboutPost = await getEntry('spec', 'about')
 const { Content } = await aboutPost.render()
 ---
 <MainGridLayout title={i18n(I18nKey.about)} description={i18n(I18nKey.about)}>
-    <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
+    <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32" style="margin: 20px;">
         <div class="card-base z-10 px-9 py-6 relative w-full ">
             <Markdown class="mt-2">
                 <Content />
             </Markdown>
         </div>
     </div>
-    
+
     <script src="https://giscus.app/client.js"
         data-repo="SytusRamlethal/SytusRamlethal.github.io"
         data-repo-id="R_kgDOKgkz8Q"
