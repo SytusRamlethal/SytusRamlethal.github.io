@@ -19,7 +19,6 @@ const len = page.data.length
 
 <MainGridLayout>
     <PostPage page={page}></PostPage>
-    <Pagination class="mx-auto onload-animation" page={page} style=`animation-delay: calc(var(--content-delay) + ${(len)*50}ms)`></Pagination>
     <script src="https://giscus.app/client.js"
         data-repo="SytusRamlethal/SytusRamlethal.github.io"
         data-repo-id="R_kgDOKgkz8Q"
@@ -36,4 +35,5 @@ const len = page.data.length
         crossorigin="anonymous"
         async>
     </script>
+    <Pagination class="mx-auto onload-animation" page={page} style=`animation-delay: calc(var(--content-delay) + ${(len)*50}ms)`></Pagination>
 </MainGridLayout>
