@@ -35,13 +35,13 @@
 
 #### JavaScript
 
-本人初学此语言时主要使用 [现代 JavaScript 教程](https://zh.javascript.info/) 进行学习。但在实际推荐和教学的反馈中，发现大部分人学习的效果不是很好，所以推荐有一定 JavaScript 或其他语言基础的朋友进行学习。
+本人初学此语言时主要使用 [现代 JavaScript 教程](https://zh.javascript.info/)。但在实际教学和推荐的反馈中，发现大部分人学习效果不好，所以建议有一定 JavaScript 或其他编程语言基础的朋友进行学习。
 
 * [笔记快捷链接➡️](https://sytusramlethal.github.io/archive/tag/JavaScript/)
 
 ### 本科知识
 
-相关文章为笔者本科期间的部分课程笔记，考虑每年学科考试重点不同，只作为参考学习，请以实际情况为主进行学习。
+相关文章为笔者本科期间的部分课程笔记，考虑每年各学科考试重点不同，只建议作为参考，请以实际情况为主进行学习。
 
 * [笔记快捷链接➡️](https://sytusramlethal.github.io/archive/category/%E6%9C%AC%E7%A7%91%E7%9F%A5%E8%AF%86/)
 
