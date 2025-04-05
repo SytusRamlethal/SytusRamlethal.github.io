@@ -1,6 +1,6 @@
 # 🎊Sytusの窝🎊
 
-## 🏆概述
+## 🏆 概述
 
 本站是由 Sytus 基于 [Fuwari](https://github.com/saicaca/fuwari) 创建的个人网站，主要用于发布本人的学习笔记与随笔等，其主要格式为 MarkDown，欢迎阅读。本站目前为 2.0 版本，前身的框架为 [Hexo](https://hexo.io/zh-cn/)，所以部分文章的发布时间并不准确，还请见谅。
 

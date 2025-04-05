@@ -1,6 +1,6 @@
 # 🎊About🎊
 
-## 🏆概述
+## 🏆 概述
 
 本站是由 Sytus 基于 [Fuwari](https://github.com/saicaca/fuwari) 创建的个人网站，主要用于发布本人的学习笔记与随笔等，其主要格式为 MarkDown，欢迎阅读。本站目前为 2.0 版本，前身的框架为 [Hexo](https://hexo.io/zh-cn/)，所以部分文章的发布时间并不准确，还请见谅。
 
@@ -8,11 +8,11 @@
 
 如果您对本站或本站内容有任何疑问，欢迎在 [Github议题](https://github.com/SytusRamlethal/SytusRamlethal.github.io/issues) 进行询问。
 
-## ⚖️许可协议
+## ⚖️ 许可协议
 
 除非另作声明，本站所有文章均采用“[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)”协议，遵循“个人非商用”原则。
 
-## 📄文章简述
+## 📄 文章简述
 
 ### 前端
 
@@ -45,7 +45,7 @@
 
 * [笔记快捷链接➡️](https://sytusramlethal.github.io/archive/category/%E6%9C%AC%E7%A7%91%E7%9F%A5%E8%AF%86/)
 
-## ❤️致谢
+## ❤️ 致谢
 
 * 博客框架🎉[Astro](https://astro.build/)；
 * 博客模板🎉[Fuwari](https://github.com/saicaca/fuwari)；
