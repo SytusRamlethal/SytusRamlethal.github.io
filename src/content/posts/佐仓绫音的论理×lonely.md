@@ -38,9 +38,7 @@ lang: 'zh-CN'
 * アトロクリスナー->After 6 Junction的听众
 * うたまる->宇多丸
 * うがき みさと->宇垣美里
-
 * 日曜天国->周日天国
-
 * sakuraron@tbs.co.jp->sakuraron@tbs.co.jp
 
 * 佐倉綾音の相談スペース->佐仓绫音的相谈空间
