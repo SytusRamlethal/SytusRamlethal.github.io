@@ -8,7 +8,6 @@ category: '随笔'
 draft: false 
 lang: 'zh-CN'
 ---
-
 ## 《アフター6ジャンクション》
 
 《**アフター6ジャンクション**》（After 6 Junction），简称“**アトロク**”，其节目的忠实听众被称为“**アトロクリスナー**”。[\[1\]](https://popscene.jp/news/040498)
@@ -40,3 +39,8 @@ lang: 'zh-CN'
 * うたまる->宇多丸
 * うがき みさと->宇垣美里
 
+* 日曜天国->周日天国
+
+* sakuraron@tbs.co.jp->sakuraron@tbs.co.jp
+
+* 佐倉綾音の相談スペース->佐仓绫音的相谈空间
